@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "Bash(ls *)",
+      "Bash(pwd)",
+      "Bash(echo *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(mkdir *)",
+      "Bash(touch *)",
+      "Bash(git *)",
+      "Bash(go *)",
+      "Bash(make *)",
+      "Bash(rm ./*)","Bash(rm -* ./*)"],
+    "deny": [
+      "Bash(rm /*)",
+      "Bash(rm ../*)","Bash(rm -* /*)","Bash(rm -* ../*)","Bash(rm ~/*)",
+      "Bash(sudo *)",
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Bash(ssh *)",
+      "Bash(scp *)"
+    ],
+    "defaultMode": "dontAsk"
+  },
+  "model": "opus"
+}
