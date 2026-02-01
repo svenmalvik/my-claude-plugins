@@ -1,0 +1,9 @@
+{
+  "name": "go-autopilot",
+  "version": "1.0.0",
+  "description": "Autonomous Go development - from spec to working code",
+  "author": {
+    "name": "Sven"
+  },
+  "keywords": ["autonomous", "feature-development", "go", "tui", "cli"]
+}
