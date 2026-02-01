@@ -1,95 +1,62 @@
-# Infinite Claude
+# Claude Code Plugins Marketplace
 
-A Claude Code configuration for fully autonomous feature development. Give it a spec, get working code.
+A collection of Claude Code plugins for autonomous development workflows.
 
-## What This Is
+## Available Plugins
 
-This repository contains a `.claude/` folder with skills, agents, and commands that enable Claude Code to develop features without user interaction. The workflow handles planning, implementation, testing, fixing, and code cleanup automatically.
+### go-autopilot
 
-## Quick Start
+Autonomous Go development - from spec to working code.
 
-1. Copy the `.claude/` folder to your project
-2. Create a spec file describing your feature
-3. Run:
-   ```
-   /feature path/to/your-spec.md
-   ```
-4. Wait for the autonomous workflow to complete
-5. Find your code in `projects/{spec-name}/`
+**Commands:**
+- `/feature [spec.md]` - Run full autonomous workflow
+- `/go-refine` - Refine Go code
 
-## How It Works
+**Agents:**
+- `code-simplifier` - Apply code simplification
+- `test-fix-loop` - Iteratively test and fix until working
+- `file-refactorer` - Split long files into focused modules
 
-The `/feature` command triggers a 6-phase autonomous workflow:
+**Skills:**
+- `autonomous-executing-plans` - Execute plans without stopping for review
+- `bubbletea-tui` - Terminal UI development
+- `cobra-cli` - Building CLI apps with Cobra
+- `code-simplifier` - Clean up code for clarity
+- `feature-workflow` - Documents the autonomous workflow
+- `go-best-practices` - Idiomatic Go patterns
+- `go-safety-critical` - NASA/JPL Power of 10 rules for Go
+- `interview` - Requirements gathering through structured questions
 
-| Phase | What Happens |
-|-------|--------------|
-| 1. Setup | Creates project folder from spec name |
-| 2. Planning | Generates implementation plan |
-| 3. Implementation | Executes plan without checkpoints |
-| 4. Test-Fix Loop | Tests as a user would, fixes failures (max 5 iterations) |
-| 5. File Length Check | Splits files > 300 LOC into modules |
-| 6. Final | Generates README with usage instructions |
+## Installation
 
-## Components
+Add a plugin to your Claude Code configuration:
 
-### Skills
+```bash
+claude plugins install https://github.com/svenmalvik/my-claude-plugins/go-autopilot
+```
 
-| Skill | Purpose |
-|-------|---------|
-| `feature-workflow` | Documents the autonomous workflow |
-| `autonomous-executing-plans` | Executes plans without stopping for review |
-| `code-simplifier` | Cleans up code for clarity |
-| `go-best-practices` | Idiomatic Go patterns |
-| `go-safety-critical` | NASA/JPL Power of 10 rules for Go |
-| `cobra-cli` | Building CLI apps with Cobra |
-| `bubbletea-tui` | Terminal UI development |
-| `interview` | Requirements gathering through structured questions |
+Or manually copy the plugin directory to your `.claude/plugins/` folder.
 
-### Agents
+## Repository Structure
 
-| Agent | Purpose |
-|-------|---------|
-| `test-fix-loop` | Iteratively test and fix until working |
-| `file-refactorer` | Split long files into focused modules |
-| `code-simplifier` | Apply code simplification skill |
+```
+marketplace.json           # Manifest listing all plugins
+<plugin-name>/
+  .claude-plugin/
+    plugin.json            # Plugin metadata
+  commands/                # Slash commands
+  agents/                  # Subagents
+  skills/                  # Skills
+  hooks/                   # Event hooks (if any)
+  CLAUDE.md                # Plugin-specific instructions
+```
 
-### Commands
+## Adding a New Plugin
 
-| Command | Purpose |
-|---------|---------|
-| `/feature [spec.md]` | Run full autonomous workflow |
-| `/go-refine` | Refine Go code |
-
-## Configuration
-
-Constants that control the workflow:
-
-| Constant | Value | Purpose |
-|----------|-------|---------|
-| MAX_ITERATIONS | 5 | Test-fix loop limit |
-| MAX_LOC | 300 | Max lines per file |
-| MAX_REFACTOR_ROUNDS | 10 | File splitting limit |
-
-## Writing Specs
-
-Create a markdown file describing what you want built. Include:
-
-- Feature description
-- Expected behavior
-- Any constraints or requirements
-- Example usage (if applicable)
-
-The workflow will interpret the spec and make autonomous decisions when details are ambiguous.
-
-## Decision-Making Rules
-
-When facing ambiguity, the workflow:
-
-1. Chooses the simpler approach
-2. Prefers standard library over external dependencies
-3. Prefers explicit over clever
-4. Ships working code over perfect code
-5. Picks the first valid option when multiple exist
+1. Create a new directory for your plugin
+2. Add `.claude-plugin/plugin.json` with metadata
+3. Add your commands, agents, skills, and hooks
+4. Update `marketplace.json` to include the new plugin
 
 ## License
 
