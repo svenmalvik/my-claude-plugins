@@ -3,31 +3,18 @@
   "name": "my-claude-plugins",
   "version": "1.0.0",
   "description": "A collection of Claude Code plugins for autonomous development workflows",
-  "author": {
-    "name": "Sven"
+  "owner": {
+    "name": "Sven",
+    "url": "https://github.com/svenmalvik"
   },
   "repository": "https://github.com/svenmalvik/my-claude-plugins",
   "plugins": [
     {
       "name": "go-autopilot",
-      "path": "go-autopilot",
+      "source": "./go-autopilot",
       "version": "1.0.0",
       "description": "Autonomous Go development - from spec to working code",
-      "keywords": ["autonomous", "feature-development", "go", "tui", "cli"],
-      "components": {
-        "commands": ["feature", "go-refine"],
-        "agents": ["code-simplifier", "test-fix-loop", "file-refactorer"],
-        "skills": [
-          "autonomous-executing-plans",
-          "bubbletea-tui",
-          "cobra-cli",
-          "code-simplifier",
-          "feature-workflow",
-          "go-best-practices",
-          "go-safety-critical",
-          "interview"
-        ]
-      }
+      "keywords": ["autonomous", "feature-development", "go", "tui", "cli"]
     }
   ]
 }
